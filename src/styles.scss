@@ -1,1 +1,213 @@
 /* You can add global styles to this file, and also import other style files */
+
+$bright-green-sass: #00FF00;
+$bright-red-sass: #FF0000;
+:root {
+    --col-primary : #FF0084;
+    --col-secondary: #B31A84;
+    --col-tersiary: #7E3F8F;
+
+    --col-del: #EFBA53;
+    --col-dark: #33001B;
+    --col-white: #ffffff;
+    --col-shade-1: #797596;
+    --col-shade-2: #a19eb6;
+    --col-shade-3: #d7d6e0;
+    --bright-green: #{$bright-green-sass};
+    --bright-red: #FF0000;
+    --col-dwhite: #e3e3e3;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+html {
+    font-family: "Parkinsans", serif;
+    font-weight: 400;
+    height: 100dvh;
+    font-style: normal;
+    line-height: 1.6;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    height: 100%;
+}
+
+.col-white {
+    color: var(--col-white);
+}
+
+.fnt-lg {
+    font-size: 2.4rem;
+}
+
+.fnt-md {
+    font-size: 1.6rem;
+}
+
+.fnt-sm {
+    font-size: 1.2rem;
+}
+
+// .heading-lg {
+//     font-size: 20rem;
+// }
+
+.nav{
+
+    // border: 10px solid red;
+
+    height: 8rem;
+    background-image: linear-gradient(90deg,#000 0%, #c67700 40%, #fcff9e 80%, #fff 100% );
+    
+    &__wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rebeccapurple;
+        height: 100%;
+        padding: 1rem 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+    &-list{
+
+        & > * {
+            background-color: #7E3F8F;
+            padding-right: 2rem;
+            text-decoration: none;
+        }
+    }
+
+}
+
+.container {
+    background-image: url(../public/img/ms5.jpeg);
+    height: calc(100% - 8rem);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.glassy {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    // border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    &__form{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    &--heading {
+        color: var(--bright-green);
+        margin-bottom: 2.5rem;
+        letter-spacing: 0.5rem;
+    }
+    }
+    &__input{
+
+    }
+    &__button{
+
+    }
+
+    &__checkbox {
+        color: #00FF00;
+        font-size: 1.8rem;
+    }
+
+
+}
+
+.custom {
+    &__input--field {
+        position: relative;
+        // background-color: #7E3F8F;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: calc(4rem + 2rem);
+        display: block;
+    }
+
+    &__input {
+        background-color: rgba(255, 255, 255, 0.3);
+        outline: none;
+        border: none;
+        border-bottom: 2px solid var(--bright-green);
+        height: 4rem;
+        width: 27rem;
+        padding: 1rem;
+        color: var(--col-dwhite); 
+        font-size: 1.8rem;
+        &::placeholder {
+            color: transparent;
+        }
+
+    }
+
+    &__input--label{
+        color: var(--bright-green);
+        font-size: 1.6rem;
+        letter-spacing: 0.5rem;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    &__input:focus + &__input--label,
+    &__input:not(:placeholder-shown) + &__input--label {
+        top: -1.5rem;
+        left: 0.5rem;
+        font-size: 1.2rem;
+        color: #333;
+        background-color: white;
+        padding: 0 5px;
+    }
+    &__input:focus {
+        &::placeholder {
+            color: var(--col-shade-1);
+            font-size: 1.2rem;
+        }
+    }
+
+    &__button{
+        padding: 1rem 3.5rem;
+        border-radius: 5px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        letter-spacing: 0.6rem;
+        
+        &--primary{
+            background-color: transparentize($color: $bright-green-sass, $amount: 0.8);
+            color: var(--bright-green);
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+        }
+
+        &--secondary{
+            background-color: transparentize($color: $bright-red-sass, $amount: 0.8);
+            color: var(--bright-red);
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+        }
+    }
+}
+
+.txt__upper {
+    text-transform: uppercase;
+}

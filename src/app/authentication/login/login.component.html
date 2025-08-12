@@ -1,0 +1,20 @@
+<div class="glassy">
+  <form [formGroup]="login" class="glassy__form">
+    <span class="txt__upper fnt-lg glassy__form--heading">login</span>
+    <div class="custom__input--field">
+      <input type="text" name="email" id="email" class="glassy__input custom__input" placeholder="Enter your email" formControlName="email">
+      <label for="email" class="txt__upper custom__input--label">Email</label>
+    </div>
+    <div class="custom__input--field">
+      <input type="password" name="password" id="password" class="glassy__input custom__input" placeholder="Enter password" formControlName="password">
+      <label for="password" class="txt__upper custom__input--label">password</label>
+    </div>
+    <div class="custom__input--field">
+      <mat-checkbox class="glassy__checkbox">confirm</mat-checkbox>
+    </div>
+    <div class="custom__input--field">
+      <button class="custom__button" [disabled]="login.invalid" [ngClass]="{'custom__button--primary': login.valid , 'custom__button--secondary': login.invalid}" (click)="submitLogin()">LOGIN</button>
+    </div>
+  </form>
+</div>
+

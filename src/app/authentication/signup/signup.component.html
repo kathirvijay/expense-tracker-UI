@@ -1,0 +1,28 @@
+<div class="glassy">
+    <form [formGroup]="signup" class="glassy__form">
+        <span class="txt__upper fnt-lg glassy__form--heading">Signup</span>
+        <div class="custom__input--field">
+            <input type="text" name="userName" id="userName" class="glassy__input custom__input" placeholder="Enter your Name" formControlName="userName">
+            <label for="userName" class="txt__upper custom__input--label">UserName</label>
+        </div>
+        <div class="custom__input--field">
+            <input type="text" name="email" id="email" class="glassy__input custom__input" placeholder="Enter your email" formControlName="email">
+            <label for="email" class="txt__upper custom__input--label">Email</label>
+        </div>
+        <div class="custom__input--field">
+            <input type="password" name="password" id="password" class="glassy__input custom__input" placeholder="Enter password" formControlName="password">
+            <label for="password" class="txt__upper custom__input--label">password</label>
+        </div>
+        <div class="custom__input--field">
+            <input type="password" name="cpassword" id="cpassword" class="glassy__input custom__input" placeholder="Confirm password" formControlName="cpassword">
+            <label for="cpassword" class="txt__upper custom__input--label">Confirm password</label>
+        </div>
+        <div class="custom__input--field">
+            <mat-checkbox class="glassy__checkbox" style="font-size: 1.8rem;">I agree your terms & Conditions</mat-checkbox>
+        </div>
+        <div class="custom__input--field">
+            <button class="custom__button custom__button--primary" (click)="signUp()">LOGIN</button>
+        </div>
+    </form>
+</div>
+
