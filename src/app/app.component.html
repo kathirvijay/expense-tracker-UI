@@ -3,9 +3,9 @@
         <h1 class="fnt-lg col-white" style="margin: 0;">cost</h1>
         <div class="nav-list fnt-md col-white">
             <a class="col-white"  [routerLink]="['/add-cost']" routerLinkActive="router-link-active">Add Cost</a>
-            <a class="col-white" [routerLink]="['/']" routerLinkActive="router-link-active">Back</a>
-            <a class="col-white" (click)="login()" routerLinkActive="router-link-active">login</a>
-            <a class="col-white" (click)="signup()" routerLinkActive="router-link-active">logout</a>
+            <a *ngIf="(isAuthenticated$ | async)" class="col-white" (click)="logout()" [routerLink]="['/']" routerLinkActive="router-link-active">Logout</a>
+            <a *ngIf="!(isAuthenticated$ | async)" class="col-white" (click)="login()" routerLinkActive="router-link-active">login</a>
+            <a *ngIf="!(isAuthenticated$ | async)" class="col-white" (click)="signup()" routerLinkActive="router-link-active">Signup</a>
         </div>
     </div>
 

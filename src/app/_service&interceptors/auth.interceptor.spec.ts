@@ -3,7 +3,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 
 import { AuthInterceptor } from './auth.interceptor';
 
-describe('authInterceptor', () => {
+// describe('authInterceptor', () => {
   // const interceptor: HttpInterceptorFn = (req, next) => 
     // TestBed.runInInjectionContext(() => new AuthInterceptor(req, next));
 
@@ -14,4 +14,4 @@ describe('authInterceptor', () => {
   // it('should be created', () => {
   //   expect(interceptor).toBeTruthy();
   // });
-});
+// });

@@ -20,19 +20,18 @@ export class ApiService {
    }
 
    Authentication(param, method) {
-    return lastValueFrom(this.http.post<any>(this.apiURL+`/api/${method.toLowerCase()}`, param).pipe(
+    // console.log('asss', this.apiURL+`/api/${method.toLowerCase()}`);
+    console.log('param', param);
+    return lastValueFrom(this.http.post<any>(this.apiURL+`/api/auth/${method.toLowerCase()}`, param).pipe(
       tap(res=>{
+        console.log('res', res);
         this.authService.isAuth(res, method)
       })
     ))
    }
 
-    Signup(param, method) {
-    return lastValueFrom(this.http.post<any>(this.apiURL+`/api/${method.toLowerCase()}`, param).pipe(
-      tap(res=>{
-        
-      })
-    ))
+   addCost(param) {
+    return lastValueFrom(this.http.post<any>(this.apiURL+`/api/v1/cost/add-cost`, param))
    }
 
 

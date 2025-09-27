@@ -1,63 +1,109 @@
 
 <div class="addCost">
-    <h1>ADD cost </h1>
-    <form [formGroup]="addCost" class="addCost-form">
+    <div class="addCost__form">
+        <h1>ADD cost (Expense) </h1>
+        <form [formGroup]="addCost"class="addCost__form-content">
         <mat-form-field class="input-field">
             <mat-label>Payment Amount</mat-label>
-            <input matInput type="text">
+            <input matInput type="number" formControlName="PaymentAmount">
         </mat-form-field>
         <mat-form-field class="input-field">
             <mat-label>Category</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="input-field">
-            <mat-label>Date</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="input-field">
-            <mat-label>Payment Method</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="input-field">
-            <mat-label>Payment Status</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="input-field">
-            <mat-label>Payment Type</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+            <mat-select formControlName="Category">
+                <mat-option value="food">Food</mat-option>
+                <mat-option value="travel">Travel</mat-option>
+                <mat-option value="shopping">Shopping</mat-option>
+                <mat-option value="entertainment">Entertainment</mat-option>
+                <mat-option value="other">Other</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field class="input-field">
             <mat-label>Payment Date</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+            <input matInput [matDatepicker]="paymentDatePicker" formControlName="PaymentDate" placeholder="Choose payment date">
+            <mat-datepicker-toggle matSuffix [for]="paymentDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #paymentDatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="input-field">
+            <mat-label>Payment Method</mat-label>
+            <mat-select formControlName="PaymentMethod">
+                <mat-option value="upi">UPI</mat-option>
+                <mat-option value="bank">Bank</mat-option>
+                <mat-option value="cash">Cash</mat-option>
+                <mat-option value="credit_card">Credit Card</mat-option>
+                <mat-option value="debit_card">Debit Card</mat-option>
+                <mat-option value="cheque">Cheque</mat-option>
+                <mat-option value="other">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-field">
+            <mat-label>Payment Status</mat-label>
+            <mat-select formControlName="PaymentStatus">
+                <mat-option value="true">Paid</mat-option>
+                <mat-option value="false">Unpaid</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="input-field">
+            <mat-label>Payment Type</mat-label>
+            <mat-select formControlName="PaymentType">
+                <mat-option value="online">Online</mat-option>
+                <mat-option value="offline">Offline</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field class="input-field">
             <mat-label>Payment Currency</mat-label>
-            <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+            <mat-select formControlName="PaymentCurrency">
+                <mat-option value="INR">INR</mat-option>
+                <mat-option value="USD">USD</mat-option>
+                <mat-option value="EUR">EUR</mat-option>
+                <mat-option value="GBP">GBP</mat-option>
+                <mat-option value="AUD">AUD</mat-option>
+                <mat-option value="CAD">CAD</mat-option>
+                <mat-option value="CHF">CHF</mat-option>
+                <mat-option value="JPY">JPY</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field class="addCost-form__desc">
+        <mat-form-field class="addCost__form-desc">
             <mat-label>Description</mat-label>
-            <textarea matInput type="text" rows="7"></textarea>
+            <textarea matInput type="text" rows="7" formControlName="Description"></textarea>
         </mat-form-field>
-    </form>
+                <div class="custom__input--field">
+                    <button class="custom__button" [disabled]="addCost.invalid" [ngClass]="{'custom__button--primary': addCost.valid , 'custom__button--secondary': addCost.invalid}" (click)="submitAddCost()">ADD COST</button>
+          </div>
+        </form>
+    </div>
+    <hr>
+    <div class="addCost__list">
+        <h1> View Expense  </h1>
+        <div  *ngIf="addCost.value">
+            <div class="addCost__list-item">
+                <h3>Category</h3><span class="text-bold">{{addCost.value.Category || 'N/A'}}</span>
+            </div>
+            <div class="addCost__list-item">
+                <h3>Amount</h3><span class="text-bold">{{addCost.value.PaymentAmount || 'N/A'}}</span>
+            </div>
+            <div class="addCost__list-item">
+                <h3>Payment Date</h3><span class="text-bold">{{addCost.value.PaymentDate | date:'dd/MM/yyyy'}}</span>
+            </div>
+            <div class="addCost__list-item">
+                <h3>Payment Method</h3><span class="text-bold">{{addCost.value.PaymentMethod || 'N/A'}}</span>
+            </div>
+            <div class="addCost__list-item">
+                <h3>Payment Status</h3><span class="text-bold">{{addCost.value.PaymentStatus || 'N/A'}}</span>
+            </div>
+            <div class="addCost__list-item">
+                <h3>Payment Type</h3><span class="text-bold">{{addCost.value.PaymentType || 'N/A'}}</span>
+            </div>
+            <div class="addCost__list-item">
+                <h3>Payment Currency</h3><span class="text-bold">{{addCost.value.PaymentCurrency || 'N/A'}}</span>
+            </div>
+            <div class="addCost__list-item">
+                <h3>Description</h3><span class="text-bold">{{addCost.value.Description || 'N/A'}}</span>
+            </div>
+            <div class="custom__input--field">
+                <button class="custom__button" [disabled]="!isSubmitted" [ngClass]="{ 'custom__button--tersiary': isSubmitted, 'custom__button--disabled': !isSubmitted}" (click)="submitAddCost()">COST VIEW</button>
+                <button class="custom__button" (click)="counter()">counter</button>
+     
+            </div>
+        </div>
+    </div>
 </div>

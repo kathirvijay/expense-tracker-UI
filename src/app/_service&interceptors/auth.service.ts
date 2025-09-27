@@ -7,7 +7,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
+  private counter$=new BehaviorSubject<number>(0)
+  count$= this.counter$.asObservable()
 
   private hasToken(): boolean {
     return !! localStorage.getItem('token')
@@ -23,8 +24,10 @@ export class AuthService {
   isAuth(res, method) {
     if( method == 'LOGIN') {
       this.login(res)
+    } else if(method == 'SIGN_UP') {
+      this.logout()
     } else {
-      this.logout(res)
+      console.log(`${method} - method is not valid`);
     }
   }
 
@@ -33,12 +36,21 @@ export class AuthService {
     this.isAuthenticatedSubject.next(true);
   }
 
-  private logout(response) {
-    localStorage.setItem('token', response.token);
-    this.isAuthenticatedSubject.next(true);
+  logout() {
+    localStorage.removeItem('token');
+    this.isAuthenticatedSubject.next(false);
   }
 
   getToken() {
     return localStorage.getItem('token')
   }
+
+    counter() {
+      this.counter$.next(this.counter$.getValue()+1)
+      this.count$.subscribe(val => console.log(val)) 
+    }
+
+    reset(){
+      this.counter$.next(0)
+    }
 }

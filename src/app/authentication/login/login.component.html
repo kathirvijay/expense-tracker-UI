@@ -16,5 +16,9 @@
       <button class="custom__button" [disabled]="login.invalid" [ngClass]="{'custom__button--primary': login.valid , 'custom__button--secondary': login.invalid}" (click)="submitLogin()">LOGIN</button>
     </div>
   </form>
+  <span>{{count$ | async}}</span>
+  <button (click)="reset()">
+    Reset
+  </button>
 </div>
 

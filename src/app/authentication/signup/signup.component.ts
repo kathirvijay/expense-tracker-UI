@@ -38,7 +38,9 @@ export class SignupComponent {
       }
       console.log("param", param);
       
-      let result = await this.apiSerice.Signup(param, 'SIGNUP');
+      let result = await this.apiSerice.Authentication(param, 'SIGN_UP');
+      console.log("result", result);
+      
       if(result.sucess){
         console.log("result", result);
         

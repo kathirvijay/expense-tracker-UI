@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MaterialModule } from '../../material/material.module';
 import { AuthService } from '../../_service&interceptors/auth.service'
 import { ApiService } from '../../_service&interceptors/api.service';
+import { Router } from '@angular/router';
+import { interval, Subject, takeUntil } from 'rxjs';
+import { AddCostComponent } from '../../add-cost/add-cost.component';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +17,21 @@ import { ApiService } from '../../_service&interceptors/api.service';
 })
 export class LoginComponent {
   login: FormGroup
-  
+    destroy$ = new Subject<void>()
+    count$: any
     constructor(private fb : FormBuilder,
-      private apiService: ApiService
+      private apiService: ApiService,
+      private router: Router,
+      private authService: AuthService
     ) {
       this.createForm()
+      this.count$= this.authService.count$
+    }
+
+    ngOnInit() {
+        interval(1000).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe(val => console.log('valll', val))
     }
   
   createForm() {
@@ -37,8 +50,9 @@ export class LoginComponent {
           password: this.login.get('password').value
         }
         let result = await this.apiService.Authentication(param, 'LOGIN');
+        console.log('result', result);
         if(result?.success) {
-
+            this.router.navigate(['/add-cost']);
         } else {
           console.log("login failed !!!");
           
@@ -46,5 +60,14 @@ export class LoginComponent {
       } catch {
 
       }
+    }
+    
+    reset() {
+      this.authService.reset()
+    }
+
+    ngOnDestroy(){
+      this.destroy$.next()
+      this.destroy$.complete()
     }
 }

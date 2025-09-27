@@ -2,6 +2,8 @@
 
 $bright-green-sass: #00FF00;
 $bright-red-sass: #FF0000;
+$bright-orange-sass: #FFA500;
+$disabled-sass: #3d3b4b;
 :root {
     --col-primary : #FF0084;
     --col-secondary: #B31A84;
@@ -16,6 +18,8 @@ $bright-red-sass: #FF0000;
     --bright-green: #{$bright-green-sass};
     --bright-red: #FF0000;
     --col-dwhite: #e3e3e3;
+    --bright-orange: #{$bright-orange-sass};
+    --disabled: #{$disabled-sass};
 }
 
 *,
@@ -57,6 +61,11 @@ body {
     font-size: 1.2rem;
 }
 
+.text-bold {
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
 // .heading-lg {
 //     font-size: 20rem;
 // }
@@ -73,7 +82,7 @@ body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background-color: rebeccapurple;
+        // background-color: rebeccapurple;
         height: 100%;
         padding: 1rem 2rem;
         background-color: rgba(255, 255, 255, 0.1);
@@ -82,7 +91,9 @@ body {
     &-list{
 
         & > * {
-            background-color: #7E3F8F;
+            // background-color: #7E3F8F;
+            color: $bright-orange-sass;
+            font-weight: bolder;
             padding-right: 2rem;
             text-decoration: none;
         }
@@ -189,13 +200,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         font-size: 1.8rem;
         font-weight: 600;
         letter-spacing: 0.6rem;
-        
+        cursor: pointer;
+        &:disabled {
+            cursor: not-allowed;
+        }
         &--primary{
             background-color: transparentize($color: $bright-green-sass, $amount: 0.8);
             color: var(--bright-green);
             border: none;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-
         }
 
         &--secondary{
@@ -203,7 +216,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             color: var(--bright-red);
             border: none;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        }
 
+        &--tersiary {
+            background-color: transparentize($color: $bright-orange-sass, $amount: 0.8);
+            color: var(--bright-orange);
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        }
+
+        &--disabled {
+            background-color: transparentize($color: $disabled-sass, $amount: 0.8);
+            color: var(--disabled);
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
         }
     }
 }

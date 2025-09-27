@@ -1,17 +1,45 @@
 
 .addCost {
-    padding: 10rem;
-    background-color: orange;
-    &-form {
+    height: 100%;
+    padding: 10rem 3rem;
+    background-color: rgba(255, 255, 255, 0.7);
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     gap: 1rem;
-    flex-wrap: wrap;
-    width: 70%;
-        &__desc{
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        &-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        &-desc{
             flex: 1 1 100%;
         }
     }
+
+
+    &__list {
+        width: 40%;
+        padding: 1.5rem;
+        &-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1rem;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+
 }
 
 .input-field {
