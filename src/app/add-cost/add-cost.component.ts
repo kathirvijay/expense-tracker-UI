@@ -10,11 +10,10 @@ import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../_service&interceptors/auth.service';
 
 @Component({
-  selector: 'app-add-cost',
-  standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule, MaterialModule],
-  templateUrl: './add-cost.component.html',
-  styleUrl: './add-cost.component.scss'
+    selector: 'app-add-cost',
+    imports: [ReactiveFormsModule, RouterModule, CommonModule, MaterialModule],
+    templateUrl: './add-cost.component.html',
+    styleUrl: './add-cost.component.scss'
 })
 export class AddCostComponent {
   addCost: FormGroup;

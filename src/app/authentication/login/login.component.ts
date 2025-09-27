@@ -9,11 +9,10 @@ import { interval, Subject, takeUntil } from 'rxjs';
 import { AddCostComponent } from '../../add-cost/add-cost.component';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MaterialModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+    selector: 'app-login',
+    imports: [ReactiveFormsModule, CommonModule, MaterialModule],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   login: FormGroup

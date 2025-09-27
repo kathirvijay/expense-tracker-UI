@@ -4,11 +4,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MaterialModule } from '../../material/material.module';
 import { ApiService } from '../../_service&interceptors/api.service';
 @Component({
-  selector: 'app-signup',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MaterialModule],
-  templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+    selector: 'app-signup',
+    imports: [ReactiveFormsModule, CommonModule, MaterialModule],
+    templateUrl: './signup.component.html',
+    styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
   signup: FormGroup

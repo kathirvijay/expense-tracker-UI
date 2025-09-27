@@ -5,11 +5,10 @@ import { BehaviorSubject, catchError, combineLatest, concat, delay, delayWhen, f
 import { AuthService } from './_service&interceptors/auth.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet, RouterModule, CommonModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'cost';
